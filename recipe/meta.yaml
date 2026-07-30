@@ -9,11 +9,9 @@ package:
 source:
   url: "https://github.com/arborx/ArborX/archive/refs/tags/v{{ version }}.tar.gz"
   sha256: 7a8aa554304a31a598c357c0b5c8b562343c40a1336d716255e75e863a7d288c
-  patches:
-    - findcuda.patch  # [cuda_compiler_version != "None"]
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win and cuda_compiler_version != "None"]
   string: "cuda{{ cuda_major }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}"  # [cuda_compiler_version != "None"]
   string: "h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}"  # [cuda_compiler_version == "None"]
@@ -24,11 +22,11 @@ requirements:
     - {{ stdlib("c") }}
     - {{ compiler('cuda') }}  # [cuda_compiler_version != "None"]
     - cmake >=3.30,<4
-    - kokkos >=4.5.0
+    - kokkos >=5.2.0
     - ninja
 
   run:
-    - kokkos >=4.5.0
+    - kokkos >=5.2.0
     - __cuda   # [cuda_compiler_version != "None"]
 
 test:
@@ -49,7 +47,7 @@ test:
     - cuda-cudart-dev
     - cuda-driver-dev  # [not win]
 {% endif %}
-    - kokkos >=4.5.0
+    - kokkos >=5.2.0
     - boost
 
   commands:
