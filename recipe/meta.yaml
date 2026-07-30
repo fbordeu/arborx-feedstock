@@ -4,10 +4,10 @@
 
 package:
   name: {{ name|lower }}
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
-  url: https://github.com/arborx/ArborX/archive/refs/tags/v{{ version }}.tar.gz
+  url: "https://github.com/arborx/ArborX/archive/refs/tags/v{{ version }}.tar.gz"
   sha256: 7a8aa554304a31a598c357c0b5c8b562343c40a1336d716255e75e863a7d288c
   patches:
     - findcuda.patch  # [cuda_compiler_version != "None"]
